@@ -31,7 +31,7 @@ import lombok.NoArgsConstructor;
 public class ProductDTO {
     Integer product_id;
     String name;
-    String desc;
+    String description;
     double price;
     Integer stock;
 }

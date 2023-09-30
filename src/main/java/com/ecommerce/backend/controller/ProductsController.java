@@ -21,7 +21,7 @@ public class ProductsController {
     @Autowired
     public ProductsController(ProductsService productService){
         this.productService = productService;
-    };
+    }
 
     @GetMapping("/public/products")
     public ResponseEntity<ProductsResponse> getAllProducts(){
