@@ -3,11 +3,12 @@
  * negocio de la aplicación. Esta capa se encarga de coordinar y gestionar las
  * operaciones y reglas de negocio de la aplicación.
  *
- * En la capa de servicio, se definen clases que encapsulan la funcionalidad de la
+ * <p>En la capa de servicio, se definen clases que encapsulan la funcionalidad de la
  * aplicación, y estas clases interactúan con las entidades y los repositorios para
  * realizar operaciones más complejas que no se limitan a simples operaciones CRUD.
+ * Especificamente, trabaja con la capa de acceso a datos, a traves de la interfaz ProductDao
  *
- * Las clases de servicio proporcionan una abstracción de alto nivel que permite
+ * <p>Las clases de servicio proporcionan una abstracción de alto nivel que permite
  * orquestar múltiples operaciones y coordinar la lógica empresarial de manera coherente.
  * Esto significa que aquí es donde se aplican las reglas de negocio específicas de la
  * aplicación, la validación de datos y cualquier otra lógica que no pertenezca a la

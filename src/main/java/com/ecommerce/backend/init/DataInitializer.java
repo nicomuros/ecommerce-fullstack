@@ -1,21 +1,19 @@
 package com.ecommerce.backend.init;
 
 import com.ecommerce.backend.models.Product;
-import com.ecommerce.backend.payloads.ProductDTO;
-import com.ecommerce.backend.repository.ProductsRepository;
+import com.ecommerce.backend.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
 
-    private final ProductsRepository productsRepository;
+    private final ProductRepository productRepository;
 
-    public DataInitializer(ProductsRepository productsRepository) {
-        this.productsRepository = productsRepository;
+    public DataInitializer(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -25,6 +23,6 @@ public class DataInitializer implements CommandLineRunner {
                 new Product("Coca cola","Fresquita",740.,20),
                 new Product("Lomito","Con papafritas",4300.,10)
         );
-        productsRepository.saveAll(productList);
+        productRepository.saveAll(productList);
     }
 }
