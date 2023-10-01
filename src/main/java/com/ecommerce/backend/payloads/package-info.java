@@ -1,5 +1,9 @@
 /**
- * El paquete "payloads" contiene clases que definen objetos de transferencia de datos (DTOs)
+ * En el contexto de las API, un payload es la información que se envía en el cuerpo de una
+ * solicitud HTTP o en la respuesta HTTP. Es el contenido real de la comunicación entre el
+ * cliente y el servidor.
+ *
+ * <p>El paquete "payloads" contiene clases que definen objetos de transferencia de datos (DTOs)
  * y objetos de respuesta (Response) utilizados para transmitir datos entre la capa de
  * presentación y la capa de servicio de la aplicación.
  *

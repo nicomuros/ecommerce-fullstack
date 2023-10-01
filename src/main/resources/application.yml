@@ -17,7 +17,7 @@
           # utilizará para generar SQL específico de PostgreSQL.
           dialect: org.hibernate.dialect.PostgreSQLDialect
           format_sql: true
-      show-sql: false
+      show-sql: true
 
     main:
       web-application-type: servlet

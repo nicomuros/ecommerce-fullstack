@@ -8,6 +8,10 @@
  * Data JPA. Estas interfaces permiten realizar operaciones de CRUD (Crear, Leer,
  * Actualizar y Eliminar) en las entidades de la aplicación de una manera sencilla.
  *
+ * <p>Si por ejemplo quiero usar otro repositorio (como JDBC manual) puedo crear el servicio
+ * de acceso, agregarle el qualifier("jdbc") y seleccionarlo en la capa de servicio que del cual
+ * dependa
+ *
  * <p>Además de las operaciones estándar de CRUD, en esta capa también se pueden agregar
  * métodos personalizados para acceder a la base de datos de acuerdo con los requisitos
  * específicos de la aplicación. Estos métodos personalizados pueden incluir consultas

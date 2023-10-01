@@ -9,7 +9,7 @@ import lombok.ToString;
 import java.math.BigDecimal;
 
 @Entity
-@Table (name="products")
+@Table ( name = "products")
 @Data
 @ToString
 @AllArgsConstructor
@@ -24,7 +24,7 @@ public class Product {
             strategy = GenerationType.SEQUENCE,
             generator = "product_id_sequence"
     )
-    Integer product_id;
+    Integer id;
     @Column(nullable = false)
     String name;
     @Column(nullable = false)

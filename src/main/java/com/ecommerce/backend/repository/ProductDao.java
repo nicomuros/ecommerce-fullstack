@@ -8,4 +8,13 @@ import java.util.Optional;
 public interface ProductDao {
     List<Product> selectAllCostumers();
     Optional<Product> selectProductById(Integer productId);
+    void insertProduct(Product product);
+
+    void deleteProductById(Integer productId);
+
+    boolean existProductWithName(String name);
+
+    boolean existProductWithId(Integer productId);
+
+    void updateProduct(Product product);
 }
