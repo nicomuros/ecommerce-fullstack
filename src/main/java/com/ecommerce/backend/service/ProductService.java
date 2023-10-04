@@ -17,68 +17,73 @@ public class ProductService {
 
     private final ProductDao productDao;
 
-    public ProductService(@Qualifier("ProductJpa") ProductDao productDao) {
+    public ProductService(@Qualifier("ProductJDBC") ProductDao productDao) {
         this.productDao = productDao;
     }
 
 
     public List<Product> getAllProducts() {
-        return productDao.selectAllCostumers();
+        return productDao.selectAllProducts();
     }
 
-    public Product getProduct(Integer productId) {
+    public Product getProduct(Long productId) {
         return productDao.selectProductById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un producto con el id: " + productId));
     }
 
-    public void addProduct(ProductRegistrationRequest productRegistrationRequest) {
-        if (productDao.existProductWithName(productRegistrationRequest.name())) {
-            throw new DuplicateResourceException("Ya existe un producto con el nombre " + productRegistrationRequest.name());
+    public void addProduct(ProductRegistrationRequest request) {
+        if (productDao.existProductWithName(request.name())) {
+            throw new DuplicateResourceException("Ya existe un producto con el nombre " + request.name());
         }
 
         productDao.insertProduct(
                 new Product(
-                        productRegistrationRequest.name(),
-                        productRegistrationRequest.description(),
-                        productRegistrationRequest.price(),
-                        productRegistrationRequest.stock()
+                        request.name(),
+                        request.description(),
+                        request.price(),
+                        request.available(),
+                        request.imgData()
                 )
         );
     }
 
-    public void deleteProductById(Integer productId) {
+    public void deleteProductById(Long productId) {
         if (!productDao.existProductWithId(productId)) {
             throw new ResourceNotFoundException("No se encontró un producto con el id: " + productId);
         }
         productDao.deleteProductById(productId);
     }
 
-    public void updateProductById(ProductModificationRequest productModificationRequest, Integer productId) {
+    public void updateProductById(ProductModificationRequest request, Long productId) {
         Product product = productDao.selectProductById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un producto con el id: " + productId));
 
         boolean changed = false;
 
-        if ((productModificationRequest.name() != null) && (!productModificationRequest.name().equals(product.getName()))) {
-            if (productDao.existProductWithName(productModificationRequest.name())) {
-                throw new DuplicateResourceException("Ya existe un producto con el nombre " + productModificationRequest.name());
+        if ((request.name() != null) && (!request.name().equals(product.getName()))) {
+            if (productDao.existProductWithName(request.name())) {
+                throw new DuplicateResourceException("Ya existe un producto con el nombre " + request.name());
             }
-            product.setName(productModificationRequest.name());
+            product.setName(request.name());
             changed = true;
         }
-        if ((productModificationRequest.description() != null) && (!productModificationRequest.description().equals(product.getDescription()))) {
-            product.setDescription(productModificationRequest.description());
+        if ((request.description() != null) && (!request.description().equals(product.getDescription()))) {
+            product.setDescription(request.description());
             changed = true;
         }
-        if ((productModificationRequest.price() != null) && (!productModificationRequest.price().equals(product.getPrice()))) {
-            product.setPrice(productModificationRequest.price());
-            changed = true;
-        }
-        if ((productModificationRequest.stock() != null) && (!productModificationRequest.stock().equals(product.getStock()))) {
-            product.setStock(productModificationRequest.stock());
+        if ((request.price() != null) && (!request.price().equals(product.getPrice()))) {
+            product.setPrice(request.price());
             changed = true;
         }
 
+        if ((request.available() != null) && (!request.available().equals(product.getAvailable()))) {
+            product.setAvailable(request.available());
+            changed = true;
+        }
+        if ((request.imgData() != null) && (!request.imgData().equals(product.getImgData()))) {
+            product.setImgData(request.imgData());
+            changed = true;
+        }
         if (!changed) {
             throw new RequestValidationException("El producto no se pudo modificar");
         }

@@ -5,6 +5,7 @@ import com.ecommerce.backend.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Component
@@ -19,10 +20,11 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         List<Product> productList = List.of(
-                new Product("Hamburguesa", "Muy rica", 2000.0, 20),
-                new Product("Coca cola","Fresquita",740.,20),
-                new Product("Lomito","Con papafritas",4300.,10)
+                new Product("Hamburguesa", "Muy rica", new BigDecimal(2500), true , "img1"),
+                new Product("Coca cola","Fresquita",new BigDecimal(400),false , "img2"),
+                new Product("Lomito","Con papafritas",new BigDecimal(7400),true , "img13")
         );
-        productRepository.saveAll(productList);
+        //productRepository.saveAll(productList);
+
     }
 }

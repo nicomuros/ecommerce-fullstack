@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductDao {
-    List<Product> selectAllCostumers();
-    Optional<Product> selectProductById(Integer productId);
+    List<Product> selectAllProducts();
+    Optional<Product> selectProductById(Long productId);
     void insertProduct(Product product);
 
-    void deleteProductById(Integer productId);
+    void deleteProductById(Long productId);
 
     boolean existProductWithName(String name);
 
-    boolean existProductWithId(Integer productId);
+    boolean existProductWithId(Long productId);
 
     void updateProduct(Product product);
 }

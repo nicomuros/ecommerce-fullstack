@@ -10,7 +10,7 @@
       password: password
     jpa:
       hibernate:
-        ddl-auto: create-drop #Que cree los schema y los elimine cuando termina
+        ddl-auto: validate #Que cree los schema y los elimine cuando termina (create-drop)
       properties:
         hibernate:
           #Esta propiedad especifica el dialecto de base de datos que Hibernate

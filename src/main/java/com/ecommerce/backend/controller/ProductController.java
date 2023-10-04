@@ -1,26 +1,21 @@
 package com.ecommerce.backend.controller;
 
 import com.ecommerce.backend.models.Product;
-import com.ecommerce.backend.payloads.ProductDetailResponse;
 import com.ecommerce.backend.payloads.ProductModificationRequest;
 import com.ecommerce.backend.payloads.ProductRegistrationRequest;
-import com.ecommerce.backend.payloads.ProductsResponse;
 import com.ecommerce.backend.service.ProductService;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products")
-public class ProductsController {
+@RequestMapping("/api/product")
+public class ProductController {
 
 
     private final ProductService productService;
 
-    public ProductsController(ProductService productService) {
+    public ProductController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -31,7 +26,7 @@ public class ProductsController {
 
     @GetMapping("/{productId}")
     public Product getProductDetailById(
-            @PathVariable("productId") Integer productId) {
+            @PathVariable("productId") Long productId) {
         return productService.getProduct(productId);
     }
 
@@ -43,13 +38,13 @@ public class ProductsController {
 
     @DeleteMapping("/{productId}")
     public void removeProduct(
-            @PathVariable("productId") Integer productId){
+            @PathVariable("productId") Long productId){
         productService.deleteProductById(productId);
     }
 
     @PutMapping("/{productId}")
     public void updateProduct(
-            @PathVariable("productId") Integer productId,
+            @PathVariable("productId") Long productId,
             @RequestBody ProductModificationRequest productModificationRequest
     ){
         productService.updateProductById(productModificationRequest, productId);

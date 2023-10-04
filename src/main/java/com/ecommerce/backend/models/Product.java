@@ -8,8 +8,16 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 
+
 @Entity
-@Table ( name = "products")
+@Table (
+        name = "product",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "product_name_unique",
+                columnNames = "name"
+                )
+        }
+)
 @Data
 @ToString
 @AllArgsConstructor
@@ -17,27 +25,31 @@ import java.math.BigDecimal;
 public class Product {
     @Id
     @SequenceGenerator(
-            name="product_id_sequence",
-            sequenceName="product_id_sequence"
+            name="product_id_seq",
+            sequenceName="product_id_seq",
+            allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "product_id_sequence"
+            generator = "product_id_seq"
     )
-    Integer id;
+    private Long id;
+    @Column(nullable = false, unique = true)
+    private String name;
     @Column(nullable = false)
-    String name;
+    private String description;
     @Column(nullable = false)
-    String description;
+    private BigDecimal price;
     @Column(nullable = false)
-    Double price;
-    @Column(nullable = false)
-    Integer stock;
+    private Boolean available;
 
-    public Product(String name, String description, Double price, Integer stock){
+    private String imgData;
+
+    public Product(String name, String description, BigDecimal price, Boolean available, String imgData){
         this.name = name;
         this.description = description;
         this.price = price;
-        this.stock = stock;
+        this.available = available;
+        this.imgData = imgData;
     }
 }
