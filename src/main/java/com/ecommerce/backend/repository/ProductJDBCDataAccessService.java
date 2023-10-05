@@ -3,6 +3,7 @@ package com.ecommerce.backend.repository;
 import com.ecommerce.backend.models.Product;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +46,7 @@ public class ProductJDBCDataAccessService implements ProductDao{
     public void insertProduct(Product product) {
         String sql = """
                 INSERT INTO product(name, description, price, available, img_data)
-                VALUES (?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?)
                 """;
         int result = jdbcTemplate.update(
                 sql,
