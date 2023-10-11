@@ -15,9 +15,9 @@ public class ProductListDataAccessService implements ProductDao {
 
     static {
         productList = List.of(
-                new Product("Hamburguesa", "Muy rica", new BigDecimal(2500), true , "img1"),
-                new Product("Coca cola","Fresquita",new BigDecimal(400),false , "img2"),
-                new Product("Lomito","Con papafritas",new BigDecimal(7400),true , "img13")
+                new Product("Hamburguesa", "Muy rica", 2500, true , "img1"),
+                new Product("Coca cola","Fresquita",400,false , "img2"),
+                new Product("Lomito","Con papafritas",7400,true , "img13")
         );
     }
 

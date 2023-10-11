@@ -6,7 +6,7 @@ CREATE TABLE product(
     id BIGSERIAL PRIMARY KEY,
     name TEXT NOT NULL ,
     description TEXT NOT NULL ,
-    price DECIMAL(10, 2) NOT NULL ,
+    price INT NOT NULL ,
     available BOOLEAN NOT NULL,
     img_data TEXT
 );

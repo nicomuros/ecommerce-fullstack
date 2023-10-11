@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public record ProductRegistrationRequest (
     String name,
     String description,
-    BigDecimal price,
+    Integer price,
     Boolean available,
     String imgData
 ){}

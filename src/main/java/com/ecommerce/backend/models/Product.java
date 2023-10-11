@@ -39,17 +39,22 @@ public class Product {
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
-    private BigDecimal price;
+    private Integer price;
     @Column(nullable = false)
     private Boolean available;
 
     private String imgData;
 
-    public Product(String name, String description, BigDecimal price, Boolean available, String imgData){
+    public Product(String name, String description, Integer price, Boolean available, String imgData){
         this.name = name;
         this.description = description;
         this.price = price;
         this.available = available;
         this.imgData = imgData;
+    }
+
+    public Product(Long id, String name) {
+        this.id = id;
+        this.name = name;
     }
 }
