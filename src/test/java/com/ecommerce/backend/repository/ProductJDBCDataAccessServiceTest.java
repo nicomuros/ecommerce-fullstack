@@ -31,7 +31,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
         // Given
 
         Product product = new Product(
-                FAKER.lordOfTheRings().character(),
+                FAKER.lordOfTheRings().character()  + UUID.randomUUID(),
                 FAKER.lordOfTheRings().location(),
                 FAKER.number().numberBetween(1500, 5000),
                 FAKER.bool().bool(),
@@ -46,7 +46,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
 
     @Test
     void selectProductById() {
-        String productName = FAKER.lordOfTheRings().character();
+        String productName = FAKER.lordOfTheRings().character()  + UUID.randomUUID();
         // Given
         Product product = new Product(
                 productName,
@@ -92,7 +92,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
     void insertProduct() {
 
         // Given
-        String productName = FAKER.lordOfTheRings().character();
+        String productName = FAKER.lordOfTheRings().character()  + UUID.randomUUID();
         Product product = new Product(
                 productName,
                 FAKER.lordOfTheRings().location(),
@@ -121,7 +121,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
     @Test
     void deleteProductById() {
         // Given
-        String productName = FAKER.lordOfTheRings().character();
+        String productName = FAKER.lordOfTheRings().character()  + UUID.randomUUID();
         Product product = new Product(
                 productName,
                 FAKER.lordOfTheRings().location(),
@@ -145,7 +145,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
     @Test
     void WillReturnFalseWhenDeleteProductById(){
         // Given
-        String productName = FAKER.name().nameWithMiddle() + FAKER.name().username();
+        String productName = FAKER.name().nameWithMiddle()  + UUID.randomUUID();
         // When
         Boolean actual = underTest.existProductWithName(productName);
         // Then
@@ -154,7 +154,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
     @Test
     void WillReturnFalseWhenNoExistProductWithName(){
         // Given
-        String productName = FAKER.name().nameWithMiddle() + FAKER.name().username();
+        String productName = FAKER.name().nameWithMiddle()  + UUID.randomUUID();
         // When
         Boolean actual = underTest.existProductWithName(productName);
         // Then
@@ -163,7 +163,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
     @Test
     void existProductWithName() {
         // Given
-        String productName = FAKER.name().nameWithMiddle()+FAKER.name().username();
+        String productName = FAKER.name().nameWithMiddle()  + UUID.randomUUID();
         Product product = new Product(
                 productName,
                 FAKER.lordOfTheRings().location(),

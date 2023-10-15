@@ -16,6 +16,18 @@ services:
     networks:
       - db
     restart: unless-stopped
+  api:
+    container_name: ecommerce-api
+    image: nicomuros/backend
+    ports:
+      - "8080:8080"
+    networks:
+      - db
+    depends_on:
+      - db
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://ecommerce-postgres:5432/ecommerce
 networks:
   db:
     driver: bridge
