@@ -6,31 +6,54 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import com.github.javafaker.*;
 
 import javax.sql.DataSource;
-
+import java.sql.*;
 
 
 @Testcontainers //habilitar el uso de Testcontainers en esas pruebas.
 public abstract class AbstractTestcontainers {
     @BeforeAll
     static void beforeAll() {
+        mySQLContainer.start();
+
+
+        // Access the MySQL database within the container
+        String jdbcUrl = mySQLContainer.getJdbcUrl();
+        String username = mySQLContainer.getUsername();
+        String password = mySQLContainer.getPassword();
+
+        try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
+            // Query the information schema to get a list of databases
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SHOW DATABASES");
+
+            // Print the list of databases
+            while (resultSet.next()) {
+                String dbName = resultSet.getString("Database");
+                System.out.println("Database: " + dbName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
         Flyway flyway = Flyway.configure().dataSource(
-                postgreSQLContainer.getJdbcUrl(),
-                postgreSQLContainer.getUsername(),
-                postgreSQLContainer.getPassword()
+                mySQLContainer.getJdbcUrl(),
+                mySQLContainer.getUsername(),
+                mySQLContainer.getPassword()
         ).load();
         flyway.migrate();
         System.out.println();
     }
 
     @Container //contenedor de Docker que se administrará automáticamente durante la ejecución de la prueba.
-    protected static PostgreSQLContainer<?> postgreSQLContainer =
-            new PostgreSQLContainer<>("postgres:latest")
+    protected static MySQLContainer<?> mySQLContainer =
+            new MySQLContainer<>("mysql:latest")
                     .withDatabaseName("ecommerce-dao-unit-test")
                     .withUsername("muros")
                     .withPassword("password");
@@ -39,25 +62,25 @@ public abstract class AbstractTestcontainers {
     private static void registerDataSourceProperties(DynamicPropertyRegistry registry){
         registry.add(
                 "spring.datasource.url",
-                postgreSQLContainer::getJdbcUrl
+                mySQLContainer::getJdbcUrl
         );
         registry.add(
                 "spring.datasource.username",
-                postgreSQLContainer::getUsername
+                mySQLContainer::getUsername
         );
         registry.add(
                 "spring.datasource.password",
-                postgreSQLContainer::getPassword
+                mySQLContainer::getPassword
         );
     }
 
     protected static DataSource getDataSource(){
         return DataSourceBuilder
                 .create()
-                .driverClassName(postgreSQLContainer.getDriverClassName())
-                .url(postgreSQLContainer.getJdbcUrl())
-                .username(postgreSQLContainer.getUsername())
-                .password(postgreSQLContainer.getPassword())
+                .driverClassName(mySQLContainer.getDriverClassName())
+                .url(mySQLContainer.getJdbcUrl())
+                .username(mySQLContainer.getUsername())
+                .password(mySQLContainer.getPassword())
                 .build();
     }
 

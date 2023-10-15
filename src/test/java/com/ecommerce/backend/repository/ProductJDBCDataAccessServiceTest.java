@@ -1,5 +1,4 @@
 package com.ecommerce.backend.repository;
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.ecommerce.backend.AbstractTestcontainers;
@@ -7,7 +6,6 @@ import com.ecommerce.backend.models.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -56,7 +54,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -79,7 +77,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
     @Test
     void WillReturnEmptyWhenSelectCustomerById(){
         //Given
-        Long id = (long) -1;
+        Integer id = -1;
 
         //When
         var actual = underTest.selectProductById(id);
@@ -130,7 +128,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -172,7 +170,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -187,7 +185,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
     @Test
     void willReturnFalseWhenNoExistProductWithId() {
         // Given
-        Long id = (long) -1;
+        Integer id = -1;
         // When
         Boolean actual = underTest.existProductWithId(id);
         // Then
@@ -206,7 +204,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -230,7 +228,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -268,7 +266,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -304,7 +302,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -341,7 +339,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -378,7 +376,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -416,7 +414,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)
@@ -452,7 +450,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.insertProduct(product);
-        Long id = underTest.selectAllProducts()
+        Integer id = underTest.selectAllProducts()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)

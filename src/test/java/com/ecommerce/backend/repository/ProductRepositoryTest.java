@@ -67,7 +67,7 @@ class ProductRepositoryTest extends AbstractTestcontainers {
                 FAKER.internet().url()
         );
         underTest.save(product);
-        Long id = underTest.findAll()
+        Integer id = underTest.findAll()
                 .stream()
                 .filter((p -> p.getName().equals(productName)))
                 .map(Product::getId)

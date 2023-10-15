@@ -29,7 +29,7 @@ public class ProductJDBCDataAccessService implements ProductDao{
     }
 
     @Override
-    public Optional<Product> selectProductById(Long productId) {
+    public Optional<Product> selectProductById(Integer productId) {
         String sql = """
                 SELECT id, name, description, price, available, img_Data
                 FROM product
@@ -60,7 +60,7 @@ public class ProductJDBCDataAccessService implements ProductDao{
     }
 
     @Override
-    public void deleteProductById(Long productId) {
+    public void deleteProductById(Integer productId) {
         String sql = """
                 DELETE FROM product
                 WHERE id = ?
@@ -83,7 +83,7 @@ public class ProductJDBCDataAccessService implements ProductDao{
     }
 
     @Override
-    public boolean existProductWithId(Long productId) {
+    public boolean existProductWithId(Integer productId) {
         String sql = """
                 SELECT count(id)
                 FROM product

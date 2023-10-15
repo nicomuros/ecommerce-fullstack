@@ -7,14 +7,14 @@ import java.util.Optional;
 
 public interface ProductDao {
     List<Product> selectAllProducts();
-    Optional<Product> selectProductById(Long productId);
+    Optional<Product> selectProductById(Integer productId);
     void insertProduct(Product product);
 
-    void deleteProductById(Long productId);
+    void deleteProductById(Integer productId);
 
     boolean existProductWithName(String name);
 
-    boolean existProductWithId(Long productId);
+    boolean existProductWithId(Integer productId);
 
     void updateProduct(Product product);
 }

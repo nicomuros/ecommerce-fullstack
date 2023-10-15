@@ -5,12 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-
-import java.math.BigDecimal;
-
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 class ProductJPADataAccessServiceTest {
@@ -42,7 +37,7 @@ class ProductJPADataAccessServiceTest {
     @Test
     void selectProductById() { //verificamos que el id que pasamos en undertest sea el que recibe el productRepository
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
 
         // When
         underTest.selectProductById(id);
@@ -54,7 +49,7 @@ class ProductJPADataAccessServiceTest {
     void insertProduct() {
         // Given
         Product product = new Product(
-                (long) 1,
+                1,
                 "Nombre",
                 "Descripcion",
                 254,
@@ -70,7 +65,7 @@ class ProductJPADataAccessServiceTest {
     @Test
     void deleteProductById() {
         // Given
-        Long id = (long)1;
+        Integer id = 1;
         // When
         underTest.deleteProductById(id);
         // Then
@@ -80,7 +75,7 @@ class ProductJPADataAccessServiceTest {
     @Test
     void updateProduct() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         Product product = new Product(
                 id,
                 "Nombre",
@@ -111,7 +106,7 @@ class ProductJPADataAccessServiceTest {
     @Test
     void existProductWithId() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         // When
         underTest.existProductWithId(id);
         // Then

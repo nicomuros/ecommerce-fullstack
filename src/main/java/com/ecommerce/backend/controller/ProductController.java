@@ -26,7 +26,7 @@ public class ProductController {
 
     @GetMapping("/{productId}")
     public Product getProductDetailById(
-            @PathVariable("productId") Long productId) {
+            @PathVariable("productId") Integer productId) {
         return productService.getProduct(productId);
     }
 
@@ -38,13 +38,13 @@ public class ProductController {
 
     @DeleteMapping("/{productId}")
     public void removeProduct(
-            @PathVariable("productId") Long productId){
+            @PathVariable("productId") Integer productId){
         productService.deleteProductById(productId);
     }
 
     @PutMapping("/{productId}")
     public void updateProduct(
-            @PathVariable("productId") Long productId,
+            @PathVariable("productId") Integer productId,
             @RequestBody ProductModificationRequest productModificationRequest
     ){
         productService.updateProductById(productModificationRequest, productId);

@@ -5,9 +5,10 @@
 
   spring:
     datasource:
-      url: jdbc:postgresql://localhost:5432/ecommerce
+      url: jdbc:mysql://127.0.0.1:3308/ecommerce?createDatabaseIfNotExist=true
       username: muros
       password: password
+      driver-class-name: com.mysql.cj.jdbc.Driver
     jpa:
       hibernate:
         ddl-auto: validate #Que cree los schema y los elimine cuando termina (create-drop)
@@ -15,7 +16,6 @@
         hibernate:
           #Esta propiedad especifica el dialecto de base de datos que Hibernate
           # utilizará para generar SQL específico de PostgreSQL.
-          dialect: org.hibernate.dialect.PostgreSQLDialect
           format_sql: true
       show-sql: true
 

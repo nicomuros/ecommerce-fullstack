@@ -2,8 +2,6 @@ package com.ecommerce.backend.repository;
 
 import com.ecommerce.backend.models.Product;
 import org.springframework.stereotype.Repository;
-
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +25,7 @@ public class ProductListDataAccessService implements ProductDao {
     }
 
     @Override
-    public Optional<Product> selectProductById(Long id) {
+    public Optional<Product> selectProductById(Integer id) {
         return productList.stream()
                 .filter(c -> c.getId().equals(id))
                 .findFirst();
@@ -45,13 +43,13 @@ public class ProductListDataAccessService implements ProductDao {
     }
 
     @Override
-    public boolean existProductWithId(Long id) {
+    public boolean existProductWithId(Integer id) {
         return productList.stream()
                 .anyMatch(c -> c.getId().equals(id));
     }
 
     @Override
-    public void deleteProductById(Long productId) {
+    public void deleteProductById(Integer productId) {
         productList.stream()
                 .filter(c -> c.getId().equals(productId))
                 .findFirst()

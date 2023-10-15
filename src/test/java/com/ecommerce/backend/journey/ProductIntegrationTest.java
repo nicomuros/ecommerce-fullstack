@@ -73,7 +73,7 @@ public class ProductIntegrationTest {
 
 
         // Get product by id
-        Long id = allProducts.stream()
+        Integer id = allProducts.stream()
                         .filter(product -> product.getName().equals(name))
                         .map(Product::getId)
                         .findFirst()
@@ -131,7 +131,7 @@ public class ProductIntegrationTest {
 
 
         // Get product by id
-        Long id = allProducts.stream()
+        Integer id = allProducts.stream()
                 .filter(product -> product.getName().equals(name))
                 .map(Product::getId)
                 .findFirst()
@@ -196,7 +196,7 @@ public class ProductIntegrationTest {
                 .getResponseBody();
 
         // Get the original product id
-        Long id = allProducts.stream()
+        Integer id = allProducts.stream()
                 .filter(product -> product.getName().equals(name))
                 .map(Product::getId)
                 .findFirst()

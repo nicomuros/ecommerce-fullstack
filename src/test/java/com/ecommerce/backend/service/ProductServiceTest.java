@@ -44,7 +44,7 @@ class ProductServiceTest {
     @Test
     void canGetProduct() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         Product product = new Product(
                 id,
                 "Nombre",
@@ -63,7 +63,7 @@ class ProductServiceTest {
     @Test
     void willThrowWhenGetProductReturnsEmptyOptional(){
         // Given
-        Long id = 2L;
+        Integer id = 2;
         Mockito.when(productDao.selectProductById(id)).thenReturn(Optional.empty());
 
         // When
@@ -130,7 +130,7 @@ class ProductServiceTest {
     @Test
     void canDeleteProductById() {
         // Given
-        Long id = 1L;
+        Integer id = 1;
         Mockito.when(productDao.existProductWithId(id)).thenReturn(true);
 
         // When
@@ -142,7 +142,7 @@ class ProductServiceTest {
     @Test
     void willThrowWhenWrongIdIsPassedToDeleteProduct() {
         // Given
-        Long id = 1L;
+        Integer id = 1;
         Mockito.when(productDao.existProductWithId(id)).thenReturn(false);
         // When
         assertThatThrownBy(() -> underTest.deleteProductById(id))
@@ -155,7 +155,7 @@ class ProductServiceTest {
     @Test
     void canUpdateProductNameById() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         String name = "name";
         Product product = new Product(
                 id,
@@ -196,7 +196,7 @@ class ProductServiceTest {
     @Test
     void willThrowWhenUpdateProductWithNewNameAlreadyTaken() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         String name = "name";
         Product product = new Product(
                 id,
@@ -226,7 +226,7 @@ class ProductServiceTest {
     @Test
     void canUpdateProductDescriptionById() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         Product product = new Product(
                 id,
                 "name",
@@ -264,7 +264,7 @@ class ProductServiceTest {
     @Test
     void canUpdateProductPriceNameById() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         Product product = new Product(
                 id,
                 "name",
@@ -302,7 +302,7 @@ class ProductServiceTest {
     @Test
     void canUpdateProductAvailableById() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         Product product = new Product(
                 id,
                 "name",
@@ -340,7 +340,7 @@ class ProductServiceTest {
     @Test
     void canUpdateProductImgDataById() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         Product product = new Product(
                 id,
                 "name",
@@ -378,7 +378,7 @@ class ProductServiceTest {
     @Test
     void canUpdateAllProductById() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         Product product = new Product(
                 id,
                 "name",
@@ -416,7 +416,7 @@ class ProductServiceTest {
     @Test
     void willNoUpdateProductWhenNoNewData() {
         // Given
-        Long id = (long) 1;
+        Integer id = 1;
         Product product = new Product(
                 id,
                 "name",

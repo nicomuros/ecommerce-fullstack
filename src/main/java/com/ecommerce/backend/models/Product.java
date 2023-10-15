@@ -15,16 +15,10 @@ import java.util.Objects;
 )
 public class Product {
     @Id
-    @SequenceGenerator(
-            name="product_id_seq",
-            sequenceName="product_id_seq",
-            allocationSize = 1
-    )
     @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "product_id_seq"
+            strategy = GenerationType.IDENTITY
     )
-    private Long id;
+    private Integer id;
     @Column(nullable = false, unique = true)
     private String name;
     @Column(nullable = false)
@@ -44,14 +38,14 @@ public class Product {
         this.imgData = imgData;
     }
 
-    public Product(Long id, String name) {
+    public Product(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
     public Product() {}
 
-    public Product(Long id, String name, String description, Integer price, Boolean available, String imgData) {
+    public Product(Integer id, String name, String description, Integer price, Boolean available, String imgData) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -60,11 +54,11 @@ public class Product {
         this.imgData = imgData;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

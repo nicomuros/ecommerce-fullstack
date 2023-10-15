@@ -26,7 +26,7 @@ public class ProductService {
         return productDao.selectAllProducts();
     }
 
-    public Product getProduct(Long productId) {
+    public Product getProduct(Integer productId) {
         return productDao.selectProductById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un producto con el id: " + productId));
     }
@@ -47,14 +47,14 @@ public class ProductService {
         );
     }
 
-    public void deleteProductById(Long productId) {
+    public void deleteProductById(Integer productId) {
         if (!productDao.existProductWithId(productId)) {
             throw new ResourceNotFoundException("No se encontró un producto con el id: " + productId);
         }
         productDao.deleteProductById(productId);
     }
 
-    public void updateProductById(ProductModificationRequest request, Long productId) {
+    public void updateProductById(ProductModificationRequest request, Integer productId) {
         Product product = productDao.selectProductById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("No se encontró un producto con el id: " + productId));
 

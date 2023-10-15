@@ -22,7 +22,7 @@ public class ProductJPADataAccessService implements ProductDao {
     }
 
     @Override
-    public Optional<Product> selectProductById(Long productId) {
+    public Optional<Product> selectProductById(Integer productId) {
         return productsRepository.findById(productId);
     }
 
@@ -32,7 +32,7 @@ public class ProductJPADataAccessService implements ProductDao {
     }
 
     @Override
-    public void deleteProductById(Long productId){
+    public void deleteProductById(Integer productId){
         productsRepository.deleteById(productId);
     }
 
@@ -46,7 +46,7 @@ public class ProductJPADataAccessService implements ProductDao {
     }
 
     @Override
-    public boolean existProductWithId(Long productId){
+    public boolean existProductWithId(Integer productId){
         return productsRepository.existsProductById(productId);
     }
 
