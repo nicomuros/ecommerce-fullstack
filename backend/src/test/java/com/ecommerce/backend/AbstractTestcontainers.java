@@ -53,7 +53,7 @@ public abstract class AbstractTestcontainers {
 
     @Container //contenedor de Docker que se administrará automáticamente durante la ejecución de la prueba.
     protected static MySQLContainer<?> mySQLContainer =
-            new MySQLContainer<>("mysql:latest")
+            new MySQLContainer<>("mysql:8.0.33")
                     .withDatabaseName("ecommerce-dao-unit-test")
                     .withUsername("muros")
                     .withPassword("password");
