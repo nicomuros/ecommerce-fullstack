@@ -16,7 +16,7 @@
       "environment" : [
         {
           "name": "SPRING_DATASOURCE_URL",
-          "value": "jdbc:postgresql://TODO:5432/ecommerce"
+          "value": "jdbc:mysql://awseb-e-fnmpk5isnp-stack-awsebrdsdatabase-xsbd1lh9qtnu.c6tgopwdu55r.sa-east-1.rds.amazonaws.com:3306/ecommerce"
         }
       ]
     }
