@@ -16,6 +16,8 @@
 	<description>Learing project</description>
 	<properties>
 		<docker.username>nicomuros</docker.username>
+		<docker.image.name>backend</docker.image.name>
+		<docker.image.tag/>
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
@@ -214,7 +216,7 @@
 						</platforms>
 					</from>
 					<to>
-						<image>docker.io/${docker.username}/${project.artifactId}:${project.version}</image>
+						<image>docker.io/${docker.username}/${docker.image.name}:${docker.image.tag}</image>
 						<tags>
 							<tag>latest</tag>
 						</tags>
