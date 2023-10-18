@@ -35,7 +35,9 @@ public class ProductService {
         if (productDao.existProductWithName(request.name())) {
             throw new DuplicateResourceException("Ya existe un producto con el nombre " + request.name());
         }
-
+        if (request.name() == null) {
+            throw new RequestValidationException("Debe ingresar un nombre");
+        }
         productDao.insertProduct(
                 new Product(
                         request.name(),
