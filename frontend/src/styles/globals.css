@@ -1,0 +1,29 @@
+:root {
+  --font-color-primary: #FFCA00;
+}
+
+/* Titulos en mayuscula */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  line-height: normal;
+  text-transform: uppercase; 
+}
+
+/* Los elementos h2 se transforman en minuscula, excepto la primer letra */
+h2{
+  text-transform:lowercase;
+}
+
+h2::first-letter{
+  text-transform: capitalize;
+}
+
+/* Parrafos, span, anchors y li */
+p, span, a, li{
+  /* Fuente ideal para un ecommerce de lomitos, que no sea la roboto */
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  line-height: normal;
+  text-decoration: none;
+}
