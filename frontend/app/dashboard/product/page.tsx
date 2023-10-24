@@ -1,24 +1,18 @@
 'use client';
+
 import Image from 'next/image';
 import { ToggleButton } from '@/components'
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import { Product } from '@/interfaces/interfaces';
+import useProductContext from '@/context/useProductsContext';
 
-type productItem = {
-  id: number;
-  name: string;
-  price: number;
-  description: string;
-  imgData: string;
-  available: boolean;
-};
-
-function ProductCard(product: productItem) {
+function ProductCard(product: Product) {
   return (
     <>
       <div className='grid grid-cols-12 my-5 items-center'>
         <div className="w-[70px] h-[70px] m-2">
-          <Image src={product.imgData} alt='product' width={60} height={60} />
+          <Image src={product.imageUrl} alt='product' width={60} height={60} />
         </div>
         <p className='col-span-2 m-2'>{product.name}</p>
         <p className='col-span-6 m-2' >{product.description}</p>
@@ -31,11 +25,13 @@ function ProductCard(product: productItem) {
 }
 
 export default function Page() {
-  const [productList, setProductList] = useState<productItem[]>();
+  
+  const {productList} = useProductContext()
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function getProducts(): Promise<productItem[] | null> {
+    async function getProducts(): Promise<Product[] | null> {
       // fetch product list data from API
       const response = await axios.get('/api/products');
       const data = await response.data;
@@ -68,7 +64,7 @@ export default function Page() {
           <h3 className="m-2 text-center">Acciones</h3>
         </div>
         <div className="w-full border border-t-0 border-x-0 pt-2 border-slate-900"></div>
-        {productList?.map((p: productItem) => (
+        {productList?.map((p: Product) => (
             <ProductCard key={p.id} {...p} />
           ))}
       </div>
