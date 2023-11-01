@@ -4,7 +4,7 @@
 
     {
       "name": "ecommerce-api",
-      "image": "nicomuros/backend:18.10.2023.21.25.46",
+      "image": "nicomuros/backend:01.11.2023.11.39.34",
       "essential": true,
       "memory": 512,
       "portMappings": [
