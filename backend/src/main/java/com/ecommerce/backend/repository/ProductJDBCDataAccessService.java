@@ -21,7 +21,7 @@ public class ProductJDBCDataAccessService implements ProductDao{
     @Override
     public List<Product> selectAllProducts() {
         String sql = """
-                SELECT id, name, description, price, available, img_Data
+                SELECT id, name, description, price, available, image_url
                 FROM product
                 """;
 
@@ -31,7 +31,7 @@ public class ProductJDBCDataAccessService implements ProductDao{
     @Override
     public Optional<Product> selectProductById(Integer productId) {
         String sql = """
-                SELECT id, name, description, price, available, img_Data
+                SELECT id, name, description, price, available, image_url
                 FROM product
                 WHERE id = ?
                 """;
@@ -45,7 +45,7 @@ public class ProductJDBCDataAccessService implements ProductDao{
     @Override
     public void insertProduct(Product product) {
         String sql = """
-                INSERT INTO product(name, description, price, available, img_data)
+                INSERT INTO product(name, description, price, available, image_url)
                 VALUES (?, ?, ?, ?, ?)
                 """;
         int result = jdbcTemplate.update(
@@ -54,7 +54,7 @@ public class ProductJDBCDataAccessService implements ProductDao{
                 product.getDescription(),
                 product.getPrice(),
                 product.getAvailable(),
-                product.getImgData()
+                product.getImageUrl()
         );
         System.out.println("jdbcTemplate.update: " + result);
     }
@@ -127,11 +127,11 @@ public class ProductJDBCDataAccessService implements ProductDao{
                     product.getId()
             );
         }
-        if (product.getImgData() != null){
-            String sql = "UPDATE product SET img_data = ? WHERE id = ?";
+        if (product.getImageUrl() != null){
+            String sql = "UPDATE product SET image_url = ? WHERE id = ?";
             jdbcTemplate.update(
                     sql,
-                    product.getImgData(),
+                    product.getImageUrl(),
                     product.getId()
             );
         }

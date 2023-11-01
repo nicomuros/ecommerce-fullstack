@@ -28,14 +28,14 @@ public class Product {
     @Column(nullable = false)
     private Boolean available;
 
-    private String imgData;
+    private String imageUrl;
 
-    public Product(String name, String description, Integer price, Boolean available, String imgData){
+    public Product(String name, String description, Integer price, Boolean available, String imageUrl){
         this.name = name;
         this.description = description;
         this.price = price;
         this.available = available;
-        this.imgData = imgData;
+        this.imageUrl = imageUrl;
     }
 
     public Product(Integer id, String name) {
@@ -45,13 +45,13 @@ public class Product {
 
     public Product() {}
 
-    public Product(Integer id, String name, String description, Integer price, Boolean available, String imgData) {
+    public Product(Integer id, String name, String description, Integer price, Boolean available, String imageUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.available = available;
-        this.imgData = imgData;
+        this.imageUrl = imageUrl;
     }
 
     public Integer getId() {
@@ -94,12 +94,12 @@ public class Product {
         this.available = available;
     }
 
-    public String getImgData() {
-        return imgData;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImgData(String imgData) {
-        this.imgData = imgData;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
@@ -107,12 +107,12 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(available, product.available) && Objects.equals(imgData, product.imgData);
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(available, product.available) && Objects.equals(imageUrl, product.imageUrl);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, available, imgData);
+        return Objects.hash(id, name, description, price, available, imageUrl);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", available=" + available +
-                ", imgData='" + imgData + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }

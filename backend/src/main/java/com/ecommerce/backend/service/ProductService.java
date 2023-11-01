@@ -44,7 +44,7 @@ public class ProductService {
                         request.description(),
                         request.price(),
                         request.available(),
-                        request.imgData()
+                        request.imageUrl()
                 )
         );
     }
@@ -82,8 +82,8 @@ public class ProductService {
             product.setAvailable(request.available());
             changed = true;
         }
-        if ((request.imgData() != null) && (!request.imgData().equals(product.getImgData()))) {
-            product.setImgData(request.imgData());
+        if ((request.imageUrl() != null) && (!request.imageUrl().equals(product.getImageUrl()))) {
+            product.setImageUrl(request.imageUrl());
             changed = true;
         }
         if (!changed) {

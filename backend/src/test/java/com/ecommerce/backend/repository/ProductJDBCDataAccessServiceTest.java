@@ -70,7 +70,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
             assertThat(p.getDescription()).isEqualTo(product.getDescription());
             assertThat(p.getPrice()).isEqualTo(product.getPrice());
             assertThat(p.getAvailable()).isEqualTo(product.getAvailable());
-            assertThat(p.getImgData()).isEqualTo(product.getImgData());
+            assertThat(p.getImageUrl()).isEqualTo(product.getImageUrl());
         });
     }
 
@@ -112,7 +112,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
             assertThat(p.getDescription()).isEqualTo(product.getDescription());
             assertThat(p.getPrice()).isEqualTo(product.getPrice());
             assertThat(p.getAvailable()).isEqualTo(product.getAvailable());
-            assertThat(p.getImgData()).isEqualTo(product.getImgData());
+            assertThat(p.getImageUrl()).isEqualTo(product.getImageUrl());
         });
     }
 
@@ -249,7 +249,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 assertThat(p.getDescription()).isEqualTo(product.getDescription());
                 assertThat(p.getPrice()).isEqualTo(product.getPrice());
                 assertThat(p.getAvailable()).isEqualTo(product.getAvailable());
-                assertThat(p.getImgData()).isEqualTo(product.getImgData());
+                assertThat(p.getImageUrl()).isEqualTo(product.getImageUrl());
             }
         );
     }
@@ -285,7 +285,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                     assertThat(p.getDescription()).isEqualTo(update.getDescription());
                     assertThat(p.getPrice()).isEqualTo(product.getPrice());
                     assertThat(p.getAvailable()).isEqualTo(product.getAvailable());
-                    assertThat(p.getImgData()).isEqualTo(product.getImgData());
+                    assertThat(p.getImageUrl()).isEqualTo(product.getImageUrl());
                 }
         );
     }
@@ -322,7 +322,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                     assertThat(p.getDescription()).isEqualTo(product.getDescription());
                     assertThat(p.getPrice()).isEqualTo(update.getPrice());
                     assertThat(p.getAvailable()).isEqualTo(product.getAvailable());
-                    assertThat(p.getImgData()).isEqualTo(product.getImgData());
+                    assertThat(p.getImageUrl()).isEqualTo(product.getImageUrl());
                 }
         );
     }
@@ -359,7 +359,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                     assertThat(p.getDescription()).isEqualTo(product.getDescription());
                     assertThat(p.getPrice()).isEqualTo(product.getPrice());
                     assertThat(p.getAvailable()).isEqualTo(update.getAvailable());
-                    assertThat(p.getImgData()).isEqualTo(product.getImgData());
+                    assertThat(p.getImageUrl()).isEqualTo(product.getImageUrl());
                 }
         );
     }
@@ -384,7 +384,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                 .orElseThrow();
         Product update = new Product();
         update.setId(id);
-        update.setImgData(FAKER.internet().url());
+        update.setImageUrl(FAKER.internet().url());
 
         // When
         underTest.updateProduct(update);
@@ -396,7 +396,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                     assertThat(p.getDescription()).isEqualTo(product.getDescription());
                     assertThat(p.getPrice()).isEqualTo(product.getPrice());
                     assertThat(p.getAvailable()).isEqualTo(product.getAvailable());
-                    assertThat(p.getImgData()).isEqualTo(update.getImgData());
+                    assertThat(p.getImageUrl()).isEqualTo(update.getImageUrl());
                 }
         );
     }
@@ -434,7 +434,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
                     assertThat(p.getDescription()).isEqualTo(product.getDescription());
                     assertThat(p.getPrice()).isEqualTo(product.getPrice());
                     assertThat(p.getAvailable()).isEqualTo(product.getAvailable());
-                    assertThat(p.getImgData()).isEqualTo(product.getImgData());
+                    assertThat(p.getImageUrl()).isEqualTo(product.getImageUrl());
                 }
         );
     }
@@ -473,7 +473,7 @@ class ProductJDBCDataAccessServiceTest extends AbstractTestcontainers {
            assertThat(p.getName()).isEqualTo(updatedProduct.getName());
            assertThat(p.getDescription()).isEqualTo(updatedProduct.getDescription());
            assertThat(p.getPrice()).isEqualTo(updatedProduct.getPrice());
-           assertThat(p.getImgData()).isEqualTo(updatedProduct.getImgData());
+           assertThat(p.getImageUrl()).isEqualTo(updatedProduct.getImageUrl());
         });
     }
 }

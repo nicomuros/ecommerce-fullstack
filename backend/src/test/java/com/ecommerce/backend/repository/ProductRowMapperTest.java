@@ -21,7 +21,7 @@ class ProductRowMapperTest {
         when(rs.getString("description")).thenReturn("description");
         when(rs.getInt("price")).thenReturn(25);
         when(rs.getBoolean("available")).thenReturn(true);
-        when(rs.getString("img_data")).thenReturn("https://img.jpg");
+        when(rs.getString("image_url")).thenReturn("https://img.jpg");
 
         // When
         Product actual = productRowMapper.mapRow(rs, 1);

@@ -4,6 +4,7 @@ import com.ecommerce.backend.models.Product;
 import com.ecommerce.backend.payloads.ProductModificationRequest;
 import com.ecommerce.backend.payloads.ProductRegistrationRequest;
 import com.github.javafaker.Faker;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +26,7 @@ public class ProductIntegrationTest {
     private WebTestClient webTestClient;
     private static final  String PRODUCT_URI = "/api/product";
     @Test
+    @Transactional
     void canRegisterAProduct() {
         // Create a registration request
         Faker faker = new Faker();
@@ -87,9 +89,18 @@ public class ProductIntegrationTest {
                 .isOk()
                 .expectBody(new ParameterizedTypeReference<Product>() {})
                 .isEqualTo(expectedProduct);
+
+        // Eliminar el item despues del test
+        webTestClient.delete()
+                .uri(PRODUCT_URI + "/{id}", id)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus()
+                .isOk();
     }
 
     @Test
+    @Transactional
     void canDeleteProduct() {
         // Create a registration request
         Faker faker = new Faker();
@@ -157,6 +168,7 @@ public class ProductIntegrationTest {
 
 
     @Test
+    @Transactional
     void canModifyAProduct() {
         // Create the original product
         Faker faker = new Faker();
@@ -249,5 +261,13 @@ public class ProductIntegrationTest {
         );
 
         assertThat(receivedProduct).isEqualTo(expectedProduct);
+
+        // Eliminar el item despues del test
+        webTestClient.delete()
+                .uri(PRODUCT_URI + "/{id}", id)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchange()
+                .expectStatus()
+                .isOk();
     }
 }

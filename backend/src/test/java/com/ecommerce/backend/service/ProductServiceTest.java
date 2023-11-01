@@ -103,7 +103,7 @@ class ProductServiceTest {
         assertThat(capturedProduct.getDescription()).isEqualTo(request.description());
         assertThat(capturedProduct.getPrice()).isEqualTo(request.price());
         assertThat(capturedProduct.getAvailable()).isEqualTo(request.available());
-        assertThat(capturedProduct.getImgData()).isEqualTo(request.imgData());
+        assertThat(capturedProduct.getImageUrl()).isEqualTo(request.imageUrl());
 
     }
 
@@ -190,7 +190,7 @@ class ProductServiceTest {
         assertThat(capturedProduct.getDescription()).isEqualTo(product.getDescription());
         assertThat(capturedProduct.getPrice()).isEqualTo(product.getPrice());
         assertThat(capturedProduct.getAvailable()).isEqualTo(product.getAvailable());
-        assertThat(capturedProduct.getImgData()).isEqualTo(product.getImgData());
+        assertThat(capturedProduct.getImageUrl()).isEqualTo(product.getImageUrl());
     }
 
     @Test
@@ -259,7 +259,7 @@ class ProductServiceTest {
         assertThat(capturedProduct.getDescription()).isEqualTo(request.description());
         assertThat(capturedProduct.getPrice()).isEqualTo(product.getPrice());
         assertThat(capturedProduct.getAvailable()).isEqualTo(product.getAvailable());
-        assertThat(capturedProduct.getImgData()).isEqualTo(product.getImgData());
+        assertThat(capturedProduct.getImageUrl()).isEqualTo(product.getImageUrl());
     }
     @Test
     void canUpdateProductPriceNameById() {
@@ -297,7 +297,7 @@ class ProductServiceTest {
         assertThat(capturedProduct.getDescription()).isEqualTo(product.getDescription());
         assertThat(capturedProduct.getPrice()).isEqualTo(request.price());
         assertThat(capturedProduct.getAvailable()).isEqualTo(product.getAvailable());
-        assertThat(capturedProduct.getImgData()).isEqualTo(product.getImgData());
+        assertThat(capturedProduct.getImageUrl()).isEqualTo(product.getImageUrl());
     }
     @Test
     void canUpdateProductAvailableById() {
@@ -335,7 +335,7 @@ class ProductServiceTest {
         assertThat(capturedProduct.getDescription()).isEqualTo(product.getDescription());
         assertThat(capturedProduct.getPrice()).isEqualTo(product.getPrice());
         assertThat(capturedProduct.getAvailable()).isEqualTo(request.available());
-        assertThat(capturedProduct.getImgData()).isEqualTo(product.getImgData());
+        assertThat(capturedProduct.getImageUrl()).isEqualTo(product.getImageUrl());
     }
     @Test
     void canUpdateProductImgDataById() {
@@ -373,7 +373,7 @@ class ProductServiceTest {
         assertThat(capturedProduct.getDescription()).isEqualTo(product.getDescription());
         assertThat(capturedProduct.getPrice()).isEqualTo(product.getPrice());
         assertThat(capturedProduct.getAvailable()).isEqualTo(product.getAvailable());
-        assertThat(capturedProduct.getImgData()).isEqualTo(request.imgData());
+        assertThat(capturedProduct.getImageUrl()).isEqualTo(request.imageUrl());
     }
     @Test
     void canUpdateAllProductById() {
@@ -411,7 +411,7 @@ class ProductServiceTest {
         assertThat(capturedProduct.getDescription()).isEqualTo(request.description());
         assertThat(capturedProduct.getPrice()).isEqualTo(request.price());
         assertThat(capturedProduct.getAvailable()).isEqualTo(request.available());
-        assertThat(capturedProduct.getImgData()).isEqualTo(request.imgData());
+        assertThat(capturedProduct.getImageUrl()).isEqualTo(request.imageUrl());
     }
     @Test
     void willNoUpdateProductWhenNoNewData() {

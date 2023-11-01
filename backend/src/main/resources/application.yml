@@ -1,23 +1,26 @@
-  server:
-    port: 8080
-    error:
-      include-message: always
+server:
+  port: 8080
+  error:
+    include-message: always
+cors:
+  allowed-origins: "*"
+  allowed-methods: "*"
 
-  spring:
-    datasource:
-      url: jdbc:mysql://127.0.0.1:3308/ecommerce?createDatabaseIfNotExist=true
-      username: muros
-      password: password
-      driver-class-name: com.mysql.cj.jdbc.Driver
-    jpa:
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3308/ecommerce?createDatabaseIfNotExist=true
+    username: muros
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate #Que cree los schema y los elimine cuando termina (create-drop)
+    properties:
       hibernate:
-        ddl-auto: validate #Que cree los schema y los elimine cuando termina (create-drop)
-      properties:
-        hibernate:
-          #Esta propiedad especifica el dialecto de base de datos que Hibernate
-          # utilizará para generar SQL específico de PostgreSQL.
-          format_sql: true
-      show-sql: true
+        #Esta propiedad especifica el dialecto de base de datos que Hibernate
+        # utilizará para generar SQL específico de PostgreSQL.
+        format_sql: true
+    show-sql: true
 
-    main:
-      web-application-type: servlet
+  main:
+    web-application-type: servlet
